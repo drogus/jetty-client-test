@@ -1,0 +1,13 @@
+To run server:
+
+    bundle install
+    bundle exec rake server
+
+To run the test request:
+
+    bundle install
+    bundle exec rake request
+
+To regenerate data:
+
+    rake generate_data
