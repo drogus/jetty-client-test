@@ -5,19 +5,20 @@ task :kirk_path do
 end
 
 task :generate_data do
-  return if File.exist?("tmp/data") && ENV['REQUEST_TASK']
-  FileUtils.mkdir_p("tmp")
-  File.open("tmp/data", "w") do |f|
-    f.puts 'a'*1_000_000
-    f.puts 'b'*500_000
-    f.puts 'c'*250_000
-    f.puts 'd' * 125_000
-    f.puts 'e'*50_000
-    f.puts 'f' * 25_000
-    f.puts 'g' * 25_000
-    f.puts 'g' * 25_000
-    f.puts 'h'*1000
-    f.puts 'i'*200
+  unless File.exist?("tmp/data") && ENV['REQUEST_TASK']
+    FileUtils.mkdir_p("tmp")
+    File.open("tmp/data", "w") do |f|
+      f.puts 'a'*1_000_000
+      f.puts 'b'*500_000
+      f.puts 'c'*250_000
+      f.puts 'd' * 125_000
+      f.puts 'e'*50_000
+      f.puts 'f' * 25_000
+      f.puts 'g' * 25_000
+      f.puts 'g' * 25_000
+      f.puts 'h'*1000
+      f.puts 'i'*200
+    end
   end
 end
 
