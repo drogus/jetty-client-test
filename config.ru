@@ -1,6 +1,5 @@
 app = lambda {|env|
-  puts 'request'
-  puts env['rack.input'].read.length
+  p [:BODY_LENGTH, env['rack.input'].read.length]
 
-  [200, {}, ["a"]] }
+  [200, {}, ["ZOMG O_o"]] }
 run app

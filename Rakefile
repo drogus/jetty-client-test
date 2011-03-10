@@ -23,7 +23,7 @@ end
 
 desc "Compile and run request for http client"
 task :request => [:kirk_path] do
-  ENV['REQUEST_TASK'] = true
+  ENV['REQUEST_TASK'] = 'true'
   Rake::Task[:generate_data].invoke
 
   jars = Dir[File.join(ENV["KIRK_PATH"], "lib/kirk/jetty/*.jar")] + ["./src/main/java"]
