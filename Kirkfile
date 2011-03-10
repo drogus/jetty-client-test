@@ -1,0 +1,6 @@
+# Set the log level to ALL.
+log :level => :all
+
+rack "config.ru" do
+  listen 4001
+end
