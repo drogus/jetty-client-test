@@ -43,8 +43,7 @@ public class MyHttpClient  {
                                    System.out.println(length);
                                    out.write(buf, 0, length);
                                }
-
-                               in.close();
+                               out.flush();
                                out.close();
                            } catch(java.io.IOException e) {
                                System.out.print(e);
