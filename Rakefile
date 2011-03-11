@@ -39,3 +39,26 @@ task :server => :kirk_path do
   kirk = File.join(ENV["KIRK_PATH"], 'bin/kirk')
   exec "bundle exec #{kirk} -c Kirkfile"
 end
+
+class MyHandler
+  def on_exception(e)
+    puts e
+  end
+end
+
+desc "Run request with kirk/client"
+task :kirk_request => [:kirk_path] do
+  ENV['REQUEST_TASK'] = 'true'
+  Rake::Task[:generate_data].invoke
+
+  require 'kirk/client'
+  require 'stringio'
+
+  File.open('tmp/data', "r") do |f|
+    str = StringIO.new(f.read)
+    response = Kirk::Client.post("http://localhost:4001/", MyHandler.new, str)
+
+    puts response.inspect
+  end
+
+end
